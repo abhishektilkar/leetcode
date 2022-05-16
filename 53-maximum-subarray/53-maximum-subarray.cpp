@@ -12,7 +12,7 @@ public:
         
             cursum = max(cursum+nums[i], nums[i]);
             
-            maxsum = max(maxsum, cursum);
+            maxsum = max(cursum, maxsum);
         
         }
         
