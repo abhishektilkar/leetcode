@@ -1,5 +1,7 @@
 class Solution {
+
 public:
+    
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
         
         int n = matrix.size();
@@ -32,7 +34,7 @@ public:
             
         }
         
-        return false;
+        return 0;
     
     }
 
