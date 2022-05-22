@@ -20,37 +20,15 @@ public:
         
         ListNode* b = q2;
         
-        while(a != NULL) {
+        while(a != b) {
             
-            a->val = 0-a->val;
-
-            a = a->next;
+            a = a == NULL ? q2 : a->next;
             
-        }
-        
-        while(b != NULL) {
-            
-            if(b->val < 0) {
-                
-                break;
-                
-            }
-            
-            b = b->next;
+            b = b == NULL ? q1 : b->next;
             
         }
         
-        a = q1;
-        
-        while(a != NULL) {
-            
-            a->val = 0-a->val;
-
-            a = a->next;
-            
-        }
-        
-        return b;
+        return a;
         
     }
     
