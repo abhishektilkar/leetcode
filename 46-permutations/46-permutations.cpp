@@ -1,25 +1,3 @@
-// class Solution {
-// public:
-//     vector<vector<int>> vANS;
-//     void heLp(vector<int> Now,vector<int>& nums,int i,int &N){
-//         if(i == N){
-//             vANS.push_back(Now);
-//         }
-//         for(int q = 0;q<N;q++){
-//             if(Now[q] == INT_MIN){
-//                 Now[q] = nums[i];
-//                 heLp(Now,nums,i+1,N);
-//                 Now[q] = INT_MIN;//INTSA
-//             }
-//         }
-//     }
-//     vector<vector<int>> permute(vector<int>& nums){
-//         int N = nums.size();
-//         vector<int> Now(N,INT_MIN);
-//         heLp(Now,nums,0,N);
-//         return vANS;
-//     }
-// };
 class Solution {
 public:
     vector<vector<int>> value;
