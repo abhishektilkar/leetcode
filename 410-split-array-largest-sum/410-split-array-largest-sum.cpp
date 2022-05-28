@@ -32,7 +32,7 @@ public:
         int high = nums[0];
         
         for(int i=1;i<n;i++) {
-            low = max(low,nums[i]);
+            low = min(low,nums[i]);
             high += nums[i];
         }
         int value;
