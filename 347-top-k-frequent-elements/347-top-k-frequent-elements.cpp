@@ -4,30 +4,30 @@ public:
         unordered_map<int,int> v;
         
         int n = nums.size();
-        vector<int> v1(q);
+        vector<int> v1;
         for(int i=0;i<n;i++) {
             v[nums[i]]++;
         }
-        priority_queue<pair<int,int>> pq;
+        
+        vector<vector<int>> a(n+1);
+        
         for(auto [x,y] : v) {
-            pq.push({y,x});
+            a[y].push_back(x);
         }
         
-        for(int i=0;i<q;i++) {
-            v1[i] = pq.top().second;
-            pq.pop();
+        for(int i=n;i>=0;i--) {
+            v1.insert(v1.end(), a[i].begin(), a[i].end());
+            if(v1.size() >= q) {
+                return v1;
+            }
         }
         
         return v1;
+        
+        
+        
+        return v1;
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
