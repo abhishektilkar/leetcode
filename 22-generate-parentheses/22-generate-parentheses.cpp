@@ -1,33 +1,33 @@
 class Solution {
 public:
-    unordered_set<string> value(int n) {
-        unordered_set<string> val;
-        if(n == 0) {
-            return val;
+    void value(vector<string> &val, string s, int n,int i, int j) {
+        if(i+j == n*2) {
+            val.push_back(s);
+            return;
         }
-        if(n == 1) {
-            val.insert("()");
-            return val;
-        }
-        unordered_set<string> v = value(n-1);
-        string s1;
-        for(auto s : v) {
-            for(int j=0;j<s.size();j++) {
-                s1 = s.substr(0,j)+"()"+s.substr(j);
-                val.insert(s1);
-            }
-        }
-        return val;
+        
+        if(i < n) value(val,s+"(",n,i+1,j);
+        if(j < i) value(val,s+")",n,i,j+1);
+
     }
     vector<string> generateParenthesis(int n) {
         vector<string> val;
-        unordered_set<string> v = value(n);
-        for(string a : v) {
-            val.push_back(a);
-        }
-        
+        value(val, "", n, 0, 0);
         return val;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
