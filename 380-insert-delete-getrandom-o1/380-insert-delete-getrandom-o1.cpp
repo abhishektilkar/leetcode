@@ -1,51 +1,37 @@
 class RandomizedSet {
 public:
-    unordered_set<int> set;
+    unordered_map<int,int> map;
+    vector<int> v;
+    
     RandomizedSet() {
         
     }
     
     bool insert(int val) {
-        if(set.count(val) == 0) {
-            set.insert(val);
+        if(map.count(val) == 0) {
+            v.push_back(val);
+            map[val] = v.size()-1;
             return 1;
         }
         return 0;
     }
     
     bool remove(int val) {
-        if(set.count(val) != 0) {
-            set.erase(val);
-            return 1;
-        }
-        return 0;
+        auto it = map.find(val);
+        if(it == map.end()) return 0;
+        int indx = (*it).second;
+        swap(v[indx],v[v.size()-1]);
+        map[v[indx]] = indx;
+        v.pop_back();
+        map.erase(val);
+        return 1;
     }
     
     int getRandom() {
-        auto it = set.cbegin();
-        int random = rand() % set.size();
-        std::advance(it, random);
-        return *it;
+        int random = rand()%v.size();
+        return v[random];
     }
-
-
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * Your RandomizedSet object will be instantiated and called as such:
