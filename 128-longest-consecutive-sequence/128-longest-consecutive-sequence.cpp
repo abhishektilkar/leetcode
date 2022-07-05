@@ -1,59 +1,36 @@
 class Solution {
-
 public:
-    
     int longestConsecutive(vector<int>& nums) {
-        
-        int n = nums.size();
-        
-        int count = 0;
-        
-        count = 1;
-        
-        int maxcount = 0;
-        
         unordered_map<int,int> map;
+        int count = 0;
+        int val = 0;
         
-        for(int i=0;i<n;i++) {
-        
-            map[nums[i]]++;
-        
+        for(int i : nums) {
+            map[i]++;
         }
         
-        for(int i=0;i<n;i++) {
-            
-            int numval = nums[i];
-            
+        for(int i : nums) {
             count = 1;
+            int q = i;
+            map.erase(q);
             
-            while(map.count(numval-1)) {
-                
+            while(map[++q] > 0) {
+                map.erase(q);
                 count++;
-                
-                map.erase(numval-1);;
-                
-                numval--;
-                
+            }
+            q = i;
+            while(map[--q] > 0) {
+                map.erase(q);
+                count++;
             }
             
-            numval = nums[i];
-            
-            while(map.count(numval+1)) {
-                
-                count++;
-
-                map.erase(numval+1);
-                
-                numval++;
-                
-            }
-            
-            maxcount = max(count,maxcount);
+            val = max(count, val);
             
         }
-        
-        return maxcount;
-        
-    }
+        return val;
+
     
+    
+    
+    }
 };
