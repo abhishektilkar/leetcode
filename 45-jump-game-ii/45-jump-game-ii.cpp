@@ -2,55 +2,36 @@ class Solution {
 public:
     int jump(vector<int>& nums) {
         
-        
-
-        
         int n = nums.size();
-        vector<int> v(n,0);
+        int l=0,h=0;
+        int l1=0,hi=0;
         
-        for(int  i=n-1;i>=0;i--) {
+        
+        
+        
+        
+        
+        int count = 0;
+        
+        while(h < n-1) {
+            count++;
             
-            if(i == n-1) {v[i] = 0; continue;}
-            
-
-
-            
-            // long //
-            int val = INT_MAX;
-            for(int j=1;j<=nums[i] && i+j < n;j++) {
-                val = min(val, v[i+j]);
+            for(int i=l;i<=h;i++) {
+                
+                if(nums[l] != 0) {
+                    l1 = h+1;
+                }
+                
+                hi = max(hi,i+nums[i]);
+                
             }
-            
+            l=l1;
+            h=hi;
 
-            
-            
-            
-            
-            
-            
-
-            if(val != INT_MAX) v[i] = val+1;
-            else v[i] = INT_MAX;
+        
         }
         
-        
-        return v[0];
+
+        return count;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
