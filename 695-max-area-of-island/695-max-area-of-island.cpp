@@ -1,36 +1,81 @@
 class Solution {
 public:
-    int area1 = 0;
     
-    void area(vector<vector<int>>& grid, int &areai, int i, int j) {
+    int v = 0;
+
+    void helperFunTo(vector<vector<int>>& grid,int i,int j,int &val) {
+        
+        
+        
         int n = grid.size();
         int m = grid[0].size();
+
         
-        if(i < n && j < m && i >= 0 && j >= 0 && grid[i][j] == 1) {
-            grid[i][j] = 2;
-            areai++;
-            area1 = max(area1,areai);
+        
+        if(i >= 0 && i < n && j >= 0 && j < m && grid[i][j] == 1) {
+            val++;
             
-            area(grid, areai, i+1, j);
-            area(grid, areai, i, j+1);
-            area(grid, areai, i-1, j);
-            area(grid, areai, i, j-1);
+            grid[i][j] = 0;
+            
+            helperFunTo(grid,i+1,j,val);
+            helperFunTo(grid,i,j+1,val);
+            helperFunTo(grid,i-1,j,val);
+            helperFunTo(grid,i,j-1,val);
+            
+            
+            
+            
+            
+            
+            
         }
+        
     }
     int maxAreaOfIsland(vector<vector<int>>& grid) {
         
         int n = grid.size();
         int m = grid[0].size();
-
+        
         for(int i=0;i<n;i++) {
             for(int j=0;j<m;j++) {
+                
+                
                 if(grid[i][j] == 1) {
-                    int areai = 0;
-                    area(grid,areai,i,j);
+                    int val = 0;
+
+
+                    
+                    helperFunTo(grid,i,j,val);
+                    
+                    // cout << val << " "; //
+
+                    v = max(val,v);
+                
                 }
+                
             }
         }
-        
-        return area1;
+        return v;
+
     }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+    
+
+
+
 };
