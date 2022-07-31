@@ -5,18 +5,20 @@ public:
         int m = 2;
         int n = numsprices.size();
         
-        vector<vector<int>> v(n,vector<int> (m,0));
-        v[n-1][1] = 0;
-        v[n-1][0] = numsprices[n-1];
+        int v1 = 0;
+        int v0 = numsprices[n-1];
+        int v1l=0,v0l=0;
         
         for(int i=n-2;i>=0;i--) {
             
-            v[i][1] = max(v[i+1][0]-numsprices[i], v[i+1][1]);
-            v[i][0] = max(numsprices[i]+v[i+1][1], v[i+1][0]);
+            v1l = max(v0-numsprices[i],v1);
+            v0l = max(numsprices[i]+v1,v0);
+            v1 = v1l;
+            v0 = v0l;
             
         }
         
-        return v[0][1];
+        return v1l;
         
     }
 };
