@@ -20,7 +20,7 @@ public:
                 j++;
 
             }
-            else if(nums[i] != nums[j] || nums[i-1] != nums[j]) {
+            else {
                 temp = nums[i+1];
                 nums[i+1] = nums[j];
                 nums[j] = temp;
